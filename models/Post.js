@@ -18,19 +18,19 @@ let postSchema = new mongoose.Schema({
 })
 
 
-postSchema.pre('remove', function (doc, next) {
-  try {
-    console.log("1111111111111111111111");
+// postSchema.pre('remove', function (doc, next) {
+//   try {
+//     console.log("1111111111111111111111");
 
-    console.log(doc);
-    const review = reviewModel.remove({
-      reviewOnID: this._id
-    }).exec();
-    next();
-  } catch (err) {
-    return res.status(500).json(err);
-  }
-});
+//     console.log(doc);
+//     const review = reviewModel.remove({
+//       reviewOnID: this._id
+//     }).exec();
+//     next();
+//   } catch (err) {
+//     return res.status(500).json(err);
+//   }
+// });
 
 
 const post = mongoose.model("post", postSchema);

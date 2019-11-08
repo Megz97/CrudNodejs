@@ -31,15 +31,20 @@ Router.post('/', async function (req, res) {
     Email,
     Password
   } = req.body;
-
+  // console.log(Name+"||||"+Email+"||||"+Password);
   try {
+    
     const userData = new userModel({
       Name,
       Email,
       Password,
       isDeleted: false
     });
+    console.log("1");
+    
     const user = await userData.save();
+    console.log("2");
+
     return res.json(user);
   } catch (err) {
     return res.status(500).json(err);

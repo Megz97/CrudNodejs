@@ -24,10 +24,20 @@ let userSchema = new mongoose.Schema({
 })
 
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next){
   this.Password = md5(this.Password);
   next();
 })
+
+
+// userSchema.pre('save', (next) => {
+//   console.log("111111");
+  
+//   console.log(this.Password);
+//   this.Password = md5(this.Password);
+//   console.log(this.Password);
+//   next();
+// });
 
 
 const user = mongoose.model("user", userSchema);

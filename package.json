@@ -12,6 +12,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "md5": "^2.2.1",
-    "mongoose": "^5.7.7"
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.8",
+    "nodemon": "^1.19.4",
+    "uuid": "^3.3.3"
   }
 }
