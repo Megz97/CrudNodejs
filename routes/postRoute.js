@@ -65,9 +65,13 @@ Router.delete('/:id', async function (req, res) {
 
   try {
     var ID = req.params.id;
-    const post = await postModel.findByIdAndRemove(ID).exec();
+    const post = await postModel.deleteMany({
+      _id: ID
+    }).exec();
     return res.json(post);
   } catch (err) {
+    console.log(err);
+    
     return res.status(500).json(err);
   }
 })

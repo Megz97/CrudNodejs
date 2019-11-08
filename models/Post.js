@@ -18,17 +18,24 @@ let postSchema = new mongoose.Schema({
 })
 
 
-// postSchema.pre('remove', function (doc, next) {
+postSchema.pre('deleteMany', async function(next){
+  let ID = this.getQuery()["_id"];
+    const review = await reviewModel.deleteMany({
+      reviewOnID: ID
+    }).exec();
+  next();
+})
+
+// postSchema.pre('deleteOne', function (next) {
 //   try {
 //     console.log("1111111111111111111111");
-
-//     console.log(doc);
-//     const review = reviewModel.remove({
-//       reviewOnID: this._id
-//     }).exec();
+//     console.log(this.title);
+//     // const review = reviewModel.deleteOne({
+//     //   reviewOnID: this._id
+//     // }).exec();
 //     next();
 //   } catch (err) {
-//     return res.status(500).json(err);
+//     return res.status(401).json(err);
 //   }
 // });
 
